@@ -1,28 +1,51 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>Shop Hướng Nghiệp</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chọn Ngành Chuẩn Bạn</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>Shop Hướng Nghiệp</h1>
-    <button onclick="toggleCart()">🛒 Giỏ hàng (<span id="cart-count">0</span>)</button>
+    <div class="logo">🎓 Chọn Ngành <span>Chuẩn Bạn</span></div>
+    <nav>
+      <ul>
+        <li><a href="#">Sản phẩm</a></li>
+        <li><a href="#">Lộ trình nghề</a></li>
+        <li><a href="#">Việc làm</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Doanh nghiệp</a></li>
+        <li><a href="#">Đăng nhập</a></li>
+        <li><a href="#" class="btn-test">Test miễn phí</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <main>
-    <div id="product-list"></div>
-    <div class="pagination" id="pagination"></div>
-  </main>
-
-  <section id="cart-section" class="hidden">
-    <h2>Giỏ hàng của bạn</h2>
-    <ul id="cart-items"></ul>
-    <p><strong>Tổng cộng:</strong> <span id="cart-total">0</span>₫</p>
-    <button onclick="clearCart()">Xóa tất cả</button>
+  <section class="hero">
+    <div class="hero-text">
+      <h1>ĐẢM BẢO TƯƠNG LAI SỰ NGHIỆP CỦA BẠN<br>VỚI NHỮNG BƯỚC ĐI VỮNG CHẮC</h1>
+      <div class="info-box">
+        <ul>
+          <li>✔️ Lộ trình cá nhân hóa</li>
+          <li>✔️ Mentor giàu kinh nghiệm</li>
+          <li>✔️ Đồng hành xuyên suốt</li>
+          <li>✔️ Kho bài test chuẩn quốc tế</li>
+        </ul>
+        <a href="#" class="btn-discover">KHÁM PHÁ NGAY</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="https://i.imgur.com/I9n6OFD.png" alt="Cô gái hướng nghiệp" />
+    </div>
   </section>
 
-  <script src="script.js"></script>
+  <section class="partners">
+    <img src="https://upload.wikimedia.org/wikipedia/vi/f/fd/Vinschool_Logo.png" alt="Vinschool" />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/FPT_logo_2010.svg" alt="FPT" />
+    <img src="https://upload.wikimedia.org/wikipedia/vi/1/10/Hoa_Sen_University_logo.png" alt="Hoa Sen" />
+    <img src="https://upload.wikimedia.org/wikipedia/vi/4/4e/Logo_DH_Van_Lang.png" alt="Van Lang" />
+    <img src="https://upload.wikimedia.org/wikipedia/vi/4/42/Logo_UEF.png" alt="UEF" />
+  </section>
 </body>
 </html>
