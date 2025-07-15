@@ -1,15 +1,176 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Chọn Ngành Chuẩn Bạn</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background-color: #fff; }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 50px;
+      align-items: center;
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo img {
+      height: 36px;
+    }
+    .logo span {
+      font-size: 20px;
+      font-weight: bold;
+      color: #0073e6;
+    }
+    nav ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      align-items: center;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+    }
+    .btn-test {
+      background-color: orange;
+      padding: 8px 15px;
+      border-radius: 20px;
+      color: white !important;
+      font-weight: bold;
+    }
+
+    /* Hero Banner */
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 60px 50px;
+      background: linear-gradient(to top, #cfeeff, #f0faff);
+      flex-wrap: wrap;
+    }
+    .hero-text {
+      max-width: 600px;
+    }
+    .hero-text h1 {
+      font-size: 32px;
+      color: #0096ff;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+    .info-box {
+      background-color: #fff5f0;
+      padding: 20px;
+      border-radius: 10px;
+      border: 2px solid #ffb199;
+      max-width: 400px;
+    }
+    .info-box ul {
+      list-style: none;
+      margin-bottom: 15px;
+    }
+    .info-box li {
+      margin: 8px 0;
+      color: #e36414;
+      font-weight: 500;
+    }
+    .btn-discover {
+      background-color: #00c851;
+      padding: 10px 20px;
+      color: white;
+      font-weight: bold;
+      border-radius: 25px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .hero-img img {
+      width: 320px;
+      margin-top: 20px;
+    }
+
+    /* Mission */
+    .mission {
+      padding: 80px 50px;
+      text-align: center;
+      background-color: #fff;
+    }
+    .mission h2 {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    .mission > p {
+      font-size: 16px;
+      max-width: 800px;
+      margin: 0 auto 50px;
+      color: #555;
+    }
+    .mission-boxes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 30px;
+      justify-items: center;
+    }
+    .box {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 25px;
+      max-width: 260px;
+      transition: box-shadow 0.3s ease;
+    }
+    .box:hover {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+    .box img {
+      height: 50px;
+      margin-bottom: 15px;
+      filter: grayscale(100%);
+    }
+    .box h3 {
+      font-size: 18px;
+      color: #444;
+      margin-bottom: 10px;
+    }
+    .box p {
+      font-size: 14px;
+      color: #666;
+    }
+
+    /* Partners */
+    .partners {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 50px;
+      padding: 30px;
+      background-color: #f8f9fa;
+      flex-wrap: wrap;
+    }
+    .partners img {
+      height: 50px;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- Header -->
   <header>
-    <div class="logo">🎓 Chọn Ngành <span>Chuẩn Bạn</span></div>
+    <div class="logo">
+      <img src="logo.png" alt="Logo">
+      <span>Chọn Ngành Chuẩn Bạn</span>
+    </div>
     <nav>
       <ul>
         <li><a href="#">Sản phẩm</a></li>
@@ -23,9 +184,10 @@
     </nav>
   </header>
 
+  <!-- Hero -->
   <section class="hero">
     <div class="hero-text">
-      <h1>Đưa ra quyết định đúng học ngành gì - vấn đề cốt lõi của hướng nghiệp<br>Không phải theo " chuẩn của xã hội" mà là " chuẩn với chính bạn "</h1>
+      <h1>ĐẢM BẢO TƯƠNG LAI SỰ NGHIỆP CỦA BẠN<br>VỚI NHỮNG BƯỚC ĐI VỮNG CHẮC</h1>
       <div class="info-box">
         <ul>
           <li>✔️ Lộ trình cá nhân hóa</li>
@@ -37,6 +199,8 @@
       </div>
     </div>
   </section>
+
+  <!-- Mission -->
   <section class="mission">
     <h2>Sứ Mệnh Kiến Tạo Sự Nghiệp Mơ Ước</h2>
     <p>
@@ -66,6 +230,9 @@
     </div>
   </section>
 
-  
-</body>
-</html>
+  <!-- Partners -->
+  <section class="partners">
+    <img src="https://upload.wikimedia.org/wikipedia/vi/f/fd/Vinschool_Logo.png" alt="Vinschool" />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/FPT_logo_2010.svg" alt="FPT" />
+    <img src="https://upload.wikimedia.org/wikipedia/vi/1/10/Hoa_Sen_University_logo.png" alt="Hoa Sen" />
+    <img src="https://upload.wikimedia.org/wikipedia/vi/4/4e/Lo
