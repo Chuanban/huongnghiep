@@ -8,231 +8,166 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Segoe UI', sans-serif; background-color: #fff; }
-
-    /* Header */
-    header {
-      display: flex;
-      justify-content: space-between;
-      padding: 20px 50px;
-      align-items: center;
-      background-color: white;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .logo img {
-      height: 36px;
-    }
-    .logo span {
-      font-size: 20px;
-      font-weight: bold;
-      color: #0073e6;
-    }
-    nav ul {
-      display: flex;
-      gap: 20px;
-      list-style: none;
-      align-items: center;
-    }
-    nav ul li a {
-      text-decoration: none;
-      color: #333;
-      font-size: 16px;
-    }
-    .btn-test {
-      background-color: orange;
-      padding: 8px 15px;
-      border-radius: 20px;
-      color: white !important;
-      font-weight: bold;
-    }
-
-    /* Hero Banner */
-    .hero {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 60px 50px;
-      background: linear-gradient(to top, #cfeeff, #f0faff);
-      flex-wrap: wrap;
-    }
-    .hero-text {
-      max-width: 600px;
-    }
-    .hero-text h1 {
-      font-size: 32px;
-      color: #0096ff;
-      margin-bottom: 20px;
-      line-height: 1.4;
-    }
-    .info-box {
-      background-color: #fff5f0;
-      padding: 20px;
-      border-radius: 10px;
-      border: 2px solid #ffb199;
-      max-width: 400px;
-    }
-    .info-box ul {
-      list-style: none;
-      margin-bottom: 15px;
-    }
-    .info-box li {
-      margin: 8px 0;
-      color: #e36414;
-      font-weight: 500;
-    }
-    .btn-discover {
-      background-color: #00c851;
-      padding: 10px 20px;
-      color: white;
-      font-weight: bold;
-      border-radius: 25px;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .hero-img img {
-      width: 320px;
-      margin-top: 20px;
-    }
-
-    /* Mission */
-    .mission {
-      padding: 80px 50px;
-      text-align: center;
-      background-color: #fff;
-    }
-    .mission h2 {
-      font-size: 28px;
-      font-weight: bold;
-      margin-bottom: 10px;
-      color: #333;
-    }
-    .mission > p {
-      font-size: 16px;
-      max-width: 800px;
-      margin: 0 auto 50px;
-      color: #555;
-    }
-    .mission-boxes {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 30px;
-      justify-items: center;
-    }
-    .box {
-      background-color: #fff;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      padding: 25px;
-      max-width: 260px;
-      transition: box-shadow 0.3s ease;
-    }
-    .box:hover {
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    }
-    .box img {
-      height: 50px;
-      margin-bottom: 15px;
-      filter: grayscale(100%);
-    }
-    .box h3 {
-      font-size: 18px;
-      color: #444;
-      margin-bottom: 10px;
-    }
-    .box p {
-      font-size: 14px;
-      color: #666;
-    }
-
-    /* Partners */
-    .partners {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 50px;
-      padding: 30px;
-      background-color: #f8f9fa;
-      flex-wrap: wrap;
-    }
-    .partners img {
-      height: 50px;
-    }
+    header { display: flex; justify-content: space-between; padding: 20px 50px; align-items: center; background-color: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .logo { display: flex; align-items: center; gap: 10px; }
+    .logo img { height: 36px; }
+    .logo span { font-size: 20px; font-weight: bold; color: #0073e6; }
+    nav ul { display: flex; gap: 20px; list-style: none; align-items: center; }
+    nav ul li a { text-decoration: none; color: #333; font-size: 16px; }
+    .btn-test { background-color: orange; padding: 8px 15px; border-radius: 20px; color: white !important; font-weight: bold; }
+    .hero { display: flex; justify-content: space-between; align-items: center; padding: 60px 50px; background: linear-gradient(to top, #cfeeff, #f0faff); flex-wrap: wrap; }
+    .hero-text { max-width: 600px; }
+    .hero-text h1 { font-size: 32px; color: #0096ff; margin-bottom: 20px; line-height: 1.4; }
+    .info-box { background-color: #fff5f0; padding: 20px; border-radius: 10px; border: 2px solid #ffb199; max-width: 400px; }
+    .info-box ul { list-style: none; margin-bottom: 15px; }
+    .info-box li { margin: 8px 0; color: #e36414; font-weight: 500; }
+    .btn-discover { background-color: #00c851; padding: 10px 20px; color: white; font-weight: bold; border-radius: 25px; text-decoration: none; display: inline-block; }
+    .hero-img img { width: 320px; margin-top: 20px; }
+    .mission { padding: 80px 50px; text-align: center; background-color: #fff; }
+    .mission h2 { font-size: 28px; font-weight: bold; margin-bottom: 10px; color: #333; }
+    .mission > p { font-size: 16px; max-width: 800px; margin: 0 auto 50px; color: #555; }
+    .mission-boxes { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 30px; justify-items: center; }
+    .box { background-color: #fff; border: 1px solid #ddd; border-radius: 10px; padding: 25px; max-width: 260px; transition: box-shadow 0.3s ease; }
+    .box:hover { box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); }
+    .box img { height: 50px; margin-bottom: 15px; filter: grayscale(100%); }
+    .box h3 { font-size: 18px; color: #444; margin-bottom: 10px; }
+    .box p { font-size: 14px; color: #666; }
+    .partners { display: flex; justify-content: center; align-items: center; gap: 50px; padding: 30px; background-color: #f8f9fa; flex-wrap: wrap; }
+    .partners img { height: 50px; }
+    .popup-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; z-index: 999; }
+    .popup-content { background: white; padding: 30px; border-radius: 10px; width: 90%; max-width: 400px; box-shadow: 0 0 20px rgba(0,0,0,0.2); text-align: center; position: relative; }
+    .close-btn { position: absolute; top: 12px; right: 15px; font-size: 24px; cursor: pointer; }
+    .popup-content input { width: 100%; padding: 10px; margin: 10px 0; border-radius: 6px; border: 1px solid #ccc; }
+    .popup-content button { padding: 12px 24px; background-color: #00c851; border: none; border-radius: 8px; color: white; font-weight: bold; cursor: pointer; }
+    .popup-content a { color: #0073e6; text-decoration: none; }
   </style>
 </head>
 <body>
-
-  <!-- Header -->
-  <header>
-    <div class="logo">
-      <img src="logo.png" alt="Logo">
-      <span>Chọn Ngành Chuẩn Bạn</span>
-    </div>
-    <nav>
+<header>
+  <div class="logo">
+    <img src="logo.png" alt="Logo">
+    <span>Chọn Ngành Chuẩn Bạn</span>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#">Sản phẩm</a></li>
+      <li><a href="#">Lộ trình nghề</a></li>
+      <li><a href="#">Việc làm</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">Doanh nghiệp</a></li>
+      <li><a href="#" id="open-login" class="btn-test">Test miễn phí</a></li>
+    </ul>
+  </nav>
+</header>
+<section class="hero">
+  <div class="hero-text">
+     <h1>MY PATH KHÔNG PHẢI THEO <br> " CHUẨN CỦA XÃ HỘI " - MÀ <br>" CHUẨN VỚI CHÍNH BẠN "</h1>
+    <div class="info-box">
       <ul>
-        <li><a href="#">Sản phẩm</a></li>
-        <li><a href="#">Lộ trình nghề</a></li>
-        <li><a href="#">Việc làm</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Doanh nghiệp</a></li>
-        <li><a href="#">Đăng nhập</a></li>
-        <li><a href="#" class="btn-test">Test miễn phí</a></li>
+        <li>✔️ Lộ trình cá nhân hóa</li>
+        <li>✔️ Mentor giàu kinh nghiệm</li>
+        <li>✔️ Đồng hành xuyên suốt</li>
+        <li>✔️ Kho bài test chuẩn quốc tế</li>
       </ul>
-    </nav>
-  </header>
-
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-text">
-      <h1>ĐẢM BẢO TƯƠNG LAI SỰ NGHIỆP CỦA BẠN<br>VỚI NHỮNG BƯỚC ĐI VỮNG CHẮC</h1>
-      <div class="info-box">
-        <ul>
-          <li>✔️ Lộ trình cá nhân hóa</li>
-          <li>✔️ Mentor giàu kinh nghiệm</li>
-          <li>✔️ Đồng hành xuyên suốt</li>
-          <li>✔️ Kho bài test chuẩn quốc tế</li>
-        </ul>
-        <a href="#" class="btn-discover">KHÁM PHÁ NGAY</a>
-      </div>
+      <a href="#" class="btn-discover" id="open-login">KHÁM PHÁ NGAY</a>
     </div>
-  </section>
-
-  <!-- Mission -->
-  <section class="mission">
-    <h2>Sứ Mệnh Kiến Tạo Sự Nghiệp Mơ Ước</h2>
-    <p>
-      Chọn Ngành Chuẩn Bạn tạo cơ hội cho các bạn trẻ khám phá tính cách, năng lực, sở thích – giải mã chính mình thông qua các bài đánh giá khoa học, chuẩn quốc tế.
-    </p>
-    <div class="mission-boxes">
-      <div class="box">
-        <img src="https://img.icons8.com/ios-filled/50/user.png" alt="Khám phá bản thân">
-        <h3>Khám Phá Bản Thân</h3>
-        <p>Giải mã bản thân, đánh thức đam mê, chọn nghề phù hợp.</p>
-      </div>
-      <div class="box">
-        <img src="https://img.icons8.com/ios-filled/50/briefcase.png" alt="Khóa học">
-        <h3>Khóa Học</h3>
-        <p>Phát triển kỹ năng mềm, kỹ năng công việc và kỹ năng sống.</p>
-      </div>
-      <div class="box">
-        <img src="https://img.icons8.com/ios-filled/50/speech-bubble.png" alt="Tư vấn hướng nghiệp">
-        <h3>Tư Vấn Hướng Nghiệp</h3>
-        <p>Sự nghiệp thành công, cuộc sống thịnh vượng.</p>
-      </div>
-      <div class="box">
-        <img src="https://img.icons8.com/ios-filled/50/settings.png" alt="Ngày hội trực tuyến">
-        <h3>Ngày Hội Trực Tuyến</h3>
-        <p>Giải pháp kết nối nhà tuyển dụng, nhà trường và người tìm việc.</p>
-      </div>
+  </div>
+</section>
+<section class="mission">
+  <h2>Sứ Mệnh Kiến Tạo Sự Nghiệp Mơ Ước</h2>
+  <p>Chọn Ngành Chuẩn Bạn tạo cơ hội cho các bạn trẻ khám phá tính cách, năng lực, sở thích – giải mã chính mình thông qua các bài đánh giá khoa học, chuẩn quốc tế.</p>
+  <div class="mission-boxes">
+    <div class="box">
+      <img src="https://img.icons8.com/ios-filled/50/user.png" alt="Khám phá">
+      <h3>Khám Phá Bản Thân</h3>
+      <p>Giải mã bản thân, đánh thức đam mê, chọn nghề phù hợp.</p>
     </div>
-  </section>
+    <div class="box">
+      <img src="https://img.icons8.com/ios-filled/50/briefcase.png" alt="Khóa học">
+      <h3>Khóa Học</h3>
+      <p>Phát triển kỹ năng mềm, công việc và kỹ năng sống.</p>
+    </div>
+    <div class="box">
+      <img src="https://img.icons8.com/ios-filled/50/speech-bubble.png" alt="Tư vấn">
+      <h3>Tư Vấn Hướng Nghiệp</h3>
+      <p>Sự nghiệp thành công, cuộc sống thịnh vượng.</p>
+    </div>
+    <div class="box">
+      <img src="https://img.icons8.com/ios-filled/50/settings.png" alt="Trực tuyến">
+      <h3>Ngày Hội Trực Tuyến</h3>
+      <p>Kết nối nhà tuyển dụng, trường và người tìm việc.</p>
+    </div>
+  </div>
+</section>
+<section class="partners">
+  <img src="https://upload.wikimedia.org/wikipedia/vi/f/fd/Vinschool_Logo.png" alt="Vinschool" />
+  <img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/FPT_logo_2010.svg" alt="FPT" />
+  <img src="https://upload.wikimedia.org/wikipedia/vi/1/10/Hoa_Sen_University_logo.png" alt="Hoa Sen" />
+  <img src="https://upload.wikimedia.org/wikipedia/vi/4/4e/Logo_DH_Van_Lang.png" alt="Van Lang" />
+  <img src="https://upload.wikimedia.org/wikipedia/vi/4/42/Logo_UEF.png" alt="UEF" />
+</section>
+<div id="auth-popup" class="popup-overlay">
+  <div class="popup-content">
+    <span id="close-auth" class="close-btn">&times;</span>
+    <div id="login-form">
+      <h2>Đăng nhập</h2>
+      <form>
+        <input type="email" placeholder="Email của bạn" required />
+        <input type="password" placeholder="Mật khẩu" required />
+        <button type="submit">Đăng nhập</button>
+        <p>Chưa có tài khoản? <a href="#" id="switch-to-register">Đăng ký ngay</a></p>
+      </form>
+    </div>
+    <div id="register-form" style="display: none;">
+      <h2>Đăng ký tài khoản</h2>
+      <form>
+        <input type="text" placeholder="Họ và tên" required />
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Mật khẩu" required />
+        <input type="password" placeholder="Xác nhận mật khẩu" required />
+        <button type="submit">Đăng ký</button>
+        <p>Đã có tài khoản? <a href="#" id="switch-to-login">Đăng nhập</a></p>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+  const openBtn = document.getElementById('open-login');
+  const popup = document.getElementById('auth-popup');
+  const closeBtn = document.getElementById('close-auth');
+  const loginForm = document.getElementById('login-form');
+  const registerForm = document.getElementById('register-form');
+  const toRegister = document.getElementById('switch-to-register');
+  const toLogin = document.getElementById('switch-to-login');
 
-  <!-- Partners -->
-  <section class="partners">
-    <img src="https://upload.wikimedia.org/wikipedia/vi/f/fd/Vinschool_Logo.png" alt="Vinschool" />
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0a/FPT_logo_2010.svg" alt="FPT" />
-    <img src="https://upload.wikimedia.org/wikipedia/vi/1/10/Hoa_Sen_University_logo.png" alt="Hoa Sen" />
-    <img src="https://upload.wikimedia.org/wikipedia/vi/4/4e/Lo
+  openBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    popup.style.display = 'flex';
+    loginForm.style.display = 'block';
+    registerForm.style.display = 'none';
+  });
+
+  closeBtn.addEventListener('click', function () {
+    popup.style.display = 'none';
+  });
+
+  toRegister.addEventListener('click', function (e) {
+    e.preventDefault();
+    loginForm.style.display = 'none';
+    registerForm.style.display = 'block';
+  });
+
+  toLogin.addEventListener('click', function (e) {
+    e.preventDefault();
+    loginForm.style.display = 'block';
+    registerForm.style.display = 'none';
+  });
+
+  window.addEventListener('click', function (e) {
+    if (e.target == popup) {
+      popup.style.display = 'none';
+    }
+  });
+</script>
+</body>
+</html>
