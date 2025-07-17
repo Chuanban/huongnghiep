@@ -21,15 +21,6 @@
       text-align: center;
       padding: 60px 20px;
     }
-    .hero h2 {
-      font-size: 32px;
-      color: #01579b;
-      margin-bottom: 10px;
-    }
-    .hero p {
-      font-size: 18px;
-      color: #0277bd;
-    }
     .cta {
       text-align: center;
       margin: 30px 0;
@@ -53,12 +44,11 @@
     }
     .question {
       margin-bottom: 20px;
-      padding-bottom: 10px;
       border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
     }
     .question h3 {
-      margin: 0 0 8px 0;
-      font-size: 18px;
+      margin-bottom: 5px;
     }
     ul.options {
       list-style: none;
@@ -73,16 +63,13 @@
       transition: all 0.2s;
       border: 2px solid transparent;
     }
-    ul.options li:hover {
-      background: #e0f7fa;
-    }
     ul.options li.selected {
       border-color: #0288d1;
       background: #b3e5fc;
     }
     #submitBtn {
-      display: block;
       margin: 30px auto;
+      display: block;
       padding: 12px 24px;
       font-size: 16px;
       background: #0288d1;
@@ -96,7 +83,6 @@
       padding: 20px;
       border-left: 6px solid #0288d1;
       border-radius: 8px;
-      font-size: 18px;
       margin-top: 30px;
     }
     footer {
@@ -104,6 +90,38 @@
       color: white;
       text-align: center;
       padding: 20px;
+    }
+    #side-info {
+      display: none;
+      position: fixed;
+      right: 20px;
+      top: 80px;
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 15px;
+      border-radius: 10px;
+      width: 140px;
+      font-size: 13px;
+      text-align: center;
+    }
+    #side-info .dot {
+      width: 22px;
+      height: 22px;
+      line-height: 22px;
+      border-radius: 50%;
+      background: #eee;
+      color: #333;
+      cursor: pointer;
+      font-size: 13px;
+      margin: 2px;
+    }
+    #nav {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 4px;
+      margin-top: 10px;
+      height: 200px;
+      overflow-y: auto;
     }
   </style>
 </head>
@@ -121,12 +139,7 @@
     <button onclick="startTest()">Bắt đầu bài test</button>
   </div>
 
-  <!-- ✅ MBTI Test Section -->
   <section id="mbti-test">
-  
-  	<p id="progress" style="font-size: 16px; color: #0288d1; font-weight: bold;">Đã trả lời: 0 / 70</p>
-    <div id="unansweredList" style="margin-bottom: 20px; font-size: 15px; color: #d32f2f;"></div>
-
     <form id="quizForm">
       <div id="quizContainer"></div>
       <button id="submitBtn" type="submit">Xem Kết Quả</button>
@@ -134,20 +147,26 @@
     <div id="result"></div>
   </section>
 
+  <div id="side-info">
+    <div><b>Số câu đã làm</b><br><span id="doneCount">0/70</span></div>
+    <div style="margin-top:10px"><b>Thời gian đã làm</b><br><span id="timer">00:00:00</span></div>
+    <div id="nav"></div>
+    <button onclick="submitTest()" style="margin:10px auto; background:orange; color:white; border:none; padding:6px 10px; border-radius:5px;">NỘP BÀI</button>
+  </div>
+
   <footer>
     © 2025 Chuẩn Bạn MyPath. All rights reserved.
   </footer>
 
-  <!-- ✅ SCRIPT -->
   <script>
-    // ✅ Hàm hiển thị bài test khi bấm nút
+    // 🟢 START TEST: show form, nav, timer
     function startTest() {
       document.getElementById("mbti-test").style.display = "block";
+      document.getElementById("side-info").style.display = "block";
       window.scrollTo(0, document.body.scrollHeight);
     }
 
-    // ✅ DANH SÁCH 70 CÂU HỎI MBTI
-    const questions = [{
+   const questions = [/* 👉👉👉 Dán 70 câu hỏi MBTI vào đây như bạn đã gửi ở trên */{
     q: "Trong một buổi tiệc, bạn sẽ?",
     a: "Nói chuyện với tất cả mọi người, kể cả người lạ",
     b: "Nói chuyện với những người bạn quen",
@@ -711,9 +730,12 @@
     dim: "JP",
     aVal: "J",
     bVal: "P"
-  }];
+  }
+    ];
 
     const quizContainer = document.getElementById("quizContainer");
+    const navContainer = document.getElementById("nav");
+
     questions.forEach((q, index) => {
       const div = document.createElement("div");
       div.className = "question";
@@ -723,28 +745,53 @@
         <ul class="options">
           <li data-value="${q.aVal}" data-dim="${q.dim}">${q.a}</li>
           <li data-value="${q.bVal}" data-dim="${q.dim}">${q.b}</li>
-        </ul>
-      `;
+        </ul>`;
       quizContainer.appendChild(div);
+
+      const dot = document.createElement("div");
+      dot.className = "dot";
+      dot.textContent = index + 1;
+      dot.onclick = () => div.scrollIntoView({ behavior: "smooth", block: "center" });
+      navContainer.appendChild(dot);
     });
 
+    // 🟢 Click chọn đáp án
     document.querySelectorAll(".options").forEach(ul => {
       ul.querySelectorAll("li").forEach(li => {
         li.addEventListener("click", () => {
           ul.querySelectorAll("li").forEach(el => el.classList.remove("selected"));
           li.classList.add("selected");
-          updateProgress();
-
+          updateNavStatus();
         });
       });
     });
 
-    // ✅ Hàm xử lý tính điểm và hiển thị kết quả
+    function updateNavStatus() {
+      const done = document.querySelectorAll(".options li.selected").length;
+      document.getElementById("doneCount").innerText = `${done}/70`;
+      document.querySelectorAll(".options").forEach((ul, idx) => {
+        const navDot = navContainer.children[idx];
+        const selected = ul.querySelector(".selected");
+        navDot.style.background = selected ? 'green' : '#eee';
+        navDot.style.color = selected ? 'white' : '#333';
+      });
+    }
+
+    // 🟢 Timer
+    let seconds = 0;
+    setInterval(() => {
+      seconds++;
+      const h = String(Math.floor(seconds / 3600)).padStart(2, "0");
+      const m = String(Math.floor((seconds % 3600) / 60)).padStart(2, "0");
+      const s = String(seconds % 60).padStart(2, "0");
+      document.getElementById("timer").innerText = `${h}:${m}:${s}`;
+    }, 1000);
+
+    // 🟢 Xử lý submit
     document.getElementById("quizForm").addEventListener("submit", function(e) {
       e.preventDefault();
       const scores = { I: 0, E: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
       let answered = 0;
-
       document.querySelectorAll(".options").forEach(ul => {
         const selected = ul.querySelector(".selected");
         if (selected) {
@@ -752,19 +799,16 @@
           answered++;
         }
       });
-
       if (answered < questions.length) {
         alert("Bạn chưa trả lời hết câu hỏi!");
         return;
       }
-
       const mbti = [
         scores.I >= scores.E ? 'I' : 'E',
         scores.S >= scores.N ? 'S' : 'N',
         scores.T >= scores.F ? 'T' : 'F',
         scores.J >= scores.P ? 'J' : 'P'
       ].join("");
-
       const info = {
         ISTJ: "Người trách nhiệm – Phù hợp với kế toán, kiểm toán, quản trị.",
         ISFJ: "Người nuôi dưỡng – Phù hợp với điều dưỡng, giáo dục mầm non.",
@@ -783,48 +827,9 @@
         ENFJ: "Người dẫn dắt – Phù hợp với lãnh đạo, tư vấn.",
         ENTJ: "Nhà lãnh đạo – Phù hợp với kinh doanh, chiến lược."
       };
-
-      const resultText = info[mbti] || "Bạn là một cá nhân độc đáo! Hãy khám phá thêm về nhóm MBTI của bạn.";
+      const resultText = info[mbti] || "Bạn là một cá nhân độc đáo!";
       document.getElementById("result").innerHTML = `<h3>Kết quả MBTI: <span style='color:#0288d1;'>${mbti}</span></h3><p>${resultText}</p>`;
       document.getElementById("result").scrollIntoView({ behavior: "smooth" });
-      
-      function updateProgress() {
-        const total = questions.length;
-        const allQuestions = document.querySelectorAll(".options");
-        let done = 0;
-        let unanswered = [];
-
-        allQuestions.forEach((ul, index) => {
-          if (ul.querySelector(".selected")) {
-            done++;
-          } else {
-            unanswered.push(index + 1); // Câu bắt đầu từ 1
-          }
-        });
-
-        document.getElementById("progress").innerText = `Đã trả lời: ${done} / ${total}`;
-
-        // Hiển thị danh sách câu chưa làm
-        const container = document.getElementById("unansweredList");
-        if (unanswered.length > 0) {
-          container.innerHTML = `⚠️ Bạn chưa làm: ${unanswered.map(i => `<span class="goto" data-q="${i}" style="cursor:pointer;text-decoration:underline;">Câu ${i}</span>`).join(", ")}`;
-        } else {
-          container.innerHTML = `<span style="color: green;">✅ Bạn đã trả lời tất cả các câu hỏi!</span>`;
-        }
-
-        // Gắn sự kiện click để cuộn tới câu
-        document.querySelectorAll(".goto").forEach(el => {
-          el.addEventListener("click", () => {
-            const num = parseInt(el.dataset.q);
-            const question = document.querySelectorAll(".question")[num - 1];
-            question.scrollIntoView({ behavior: "smooth", block: "center" });
-            question.style.boxShadow = "0 0 15px #0288d1";
-            setTimeout(() => question.style.boxShadow = "", 1000);
-          });
-        });
-      }
-
-      
     });
   </script>
 </body>
