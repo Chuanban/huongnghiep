@@ -123,6 +123,10 @@
 
   <!-- ✅ MBTI Test Section -->
   <section id="mbti-test">
+  
+  	<p id="progress" style="font-size: 16px; color: #0288d1; font-weight: bold;">Đã trả lời: 0 / 70</p>
+    <div id="unansweredList" style="margin-bottom: 20px; font-size: 15px; color: #d32f2f;"></div>
+
     <form id="quizForm">
       <div id="quizContainer"></div>
       <button id="submitBtn" type="submit">Xem Kết Quả</button>
@@ -729,6 +733,8 @@
         li.addEventListener("click", () => {
           ul.querySelectorAll("li").forEach(el => el.classList.remove("selected"));
           li.classList.add("selected");
+          updateProgress();
+
         });
       });
     });
@@ -781,6 +787,44 @@
       const resultText = info[mbti] || "Bạn là một cá nhân độc đáo! Hãy khám phá thêm về nhóm MBTI của bạn.";
       document.getElementById("result").innerHTML = `<h3>Kết quả MBTI: <span style='color:#0288d1;'>${mbti}</span></h3><p>${resultText}</p>`;
       document.getElementById("result").scrollIntoView({ behavior: "smooth" });
+      
+      function updateProgress() {
+        const total = questions.length;
+        const allQuestions = document.querySelectorAll(".options");
+        let done = 0;
+        let unanswered = [];
+
+        allQuestions.forEach((ul, index) => {
+          if (ul.querySelector(".selected")) {
+            done++;
+          } else {
+            unanswered.push(index + 1); // Câu bắt đầu từ 1
+          }
+        });
+
+        document.getElementById("progress").innerText = `Đã trả lời: ${done} / ${total}`;
+
+        // Hiển thị danh sách câu chưa làm
+        const container = document.getElementById("unansweredList");
+        if (unanswered.length > 0) {
+          container.innerHTML = `⚠️ Bạn chưa làm: ${unanswered.map(i => `<span class="goto" data-q="${i}" style="cursor:pointer;text-decoration:underline;">Câu ${i}</span>`).join(", ")}`;
+        } else {
+          container.innerHTML = `<span style="color: green;">✅ Bạn đã trả lời tất cả các câu hỏi!</span>`;
+        }
+
+        // Gắn sự kiện click để cuộn tới câu
+        document.querySelectorAll(".goto").forEach(el => {
+          el.addEventListener("click", () => {
+            const num = parseInt(el.dataset.q);
+            const question = document.querySelectorAll(".question")[num - 1];
+            question.scrollIntoView({ behavior: "smooth", block: "center" });
+            question.style.boxShadow = "0 0 15px #0288d1";
+            setTimeout(() => question.style.boxShadow = "", 1000);
+          });
+        });
+      }
+
+      
     });
   </script>
 </body>
